@@ -187,19 +187,8 @@ public class CharacterCreator extends Observable  implements Serializable{
             case 0:
                 if (updateTo > 0) {
                     if (mAvailablePoints > 0) {
-                        mAttributesMap.put(Attribute.STRENGTH.name(), mAttributesMap.get(Attribute.STRENGTH.name()) + updateTo);
-                    }
-                } else {
-                    if (mAttributesMap.get(Attribute.STRENGTH.name()) > 1) {
-                        mAttributesMap.put(Attribute.STRENGTH.name(), mAttributesMap.get(Attribute.STRENGTH.name()) + updateTo);
-                        setAvailablePoints(mAvailablePoints-updateTo);
-                    }
-                }
-                break;
-            case 1:
-                if (updateTo > 0) {
-                    if (mAvailablePoints > 0) {
                         mAttributesMap.put(Attribute.AGILITY.name(), mAttributesMap.get(Attribute.AGILITY.name()) + updateTo);
+                        setAvailablePoints(mAvailablePoints-updateTo);
                     }
                 } else {
                     if (mAttributesMap.get(Attribute.AGILITY.name()) > 1) {
@@ -208,10 +197,11 @@ public class CharacterCreator extends Observable  implements Serializable{
                     }
                 }
                 break;
-            case 2:
+            case 1:
                 if (updateTo > 0) {
                     if (mAvailablePoints > 0) {
                         mAttributesMap.put(Attribute.INTELLECT.name(), mAttributesMap.get(Attribute.INTELLECT.name()) + updateTo);
+                        setAvailablePoints(mAvailablePoints-updateTo);
                     }
                 } else {
                     if (mAttributesMap.get(Attribute.INTELLECT.name()) > 1) {
@@ -220,10 +210,24 @@ public class CharacterCreator extends Observable  implements Serializable{
                     }
                 }
                 break;
+            case 2:
+                if (updateTo > 0) {
+                    if (mAvailablePoints > 0) {
+                        mAttributesMap.put(Attribute.LUCK.name(), mAttributesMap.get(Attribute.LUCK.name()) + updateTo);
+                        setAvailablePoints(mAvailablePoints-updateTo);
+                    }
+                } else {
+                    if (mAttributesMap.get(Attribute.LUCK.name()) > 1) {
+                        mAttributesMap.put(Attribute.LUCK.name(), mAttributesMap.get(Attribute.LUCK.name()) + updateTo);
+                        setAvailablePoints(mAvailablePoints-updateTo);
+                    }
+                }
+                break;
             case 3:
                 if (updateTo > 0) {
                     if (mAvailablePoints > 0) {
                         mAttributesMap.put(Attribute.STAMINA.name(), mAttributesMap.get(Attribute.STAMINA.name()) + updateTo);
+                        setAvailablePoints(mAvailablePoints-updateTo);
                     }
                 } else {
                     if (mAttributesMap.get(Attribute.STAMINA.name()) > 1) {
@@ -235,11 +239,12 @@ public class CharacterCreator extends Observable  implements Serializable{
             case 4:
                 if (updateTo > 0) {
                     if (mAvailablePoints > 0) {
-                        mAttributesMap.put(Attribute.LUCK.name(), mAttributesMap.get(Attribute.LUCK.name()) + updateTo);
+                        mAttributesMap.put(Attribute.STRENGTH.name(), mAttributesMap.get(Attribute.STRENGTH.name()) + updateTo);
+                        setAvailablePoints(mAvailablePoints-updateTo);
                     }
                 } else {
-                    if (mAttributesMap.get(Attribute.LUCK.name()) > 1) {
-                        mAttributesMap.put(Attribute.LUCK.name(), mAttributesMap.get(Attribute.LUCK.name()) + updateTo);
+                    if (mAttributesMap.get(Attribute.STRENGTH.name()) > 1) {
+                        mAttributesMap.put(Attribute.STRENGTH.name(), mAttributesMap.get(Attribute.STRENGTH.name()) + updateTo);
                         setAvailablePoints(mAvailablePoints-updateTo);
                     }
                 }
