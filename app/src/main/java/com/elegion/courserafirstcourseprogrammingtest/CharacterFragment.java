@@ -32,7 +32,6 @@ public class CharacterFragment extends Fragment {
     private TextView mDodge;
 
     public static CharacterFragment newInstance(Character character) {
-
         Bundle args = new Bundle();
         args.putSerializable(ARG_CHARACTER, character);
         CharacterFragment fragment = new CharacterFragment();
@@ -48,7 +47,8 @@ public class CharacterFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_character, container, false);
     }
 
@@ -84,6 +84,4 @@ public class CharacterFragment extends Fragment {
         mCriticalHit = view.findViewById(R.id.value_critical_hit_chance);
         mCriticalHit.setText(mCharacter.getCriticalHitChance());
     }
-
-
 }

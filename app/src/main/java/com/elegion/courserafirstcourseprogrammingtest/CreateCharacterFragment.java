@@ -34,8 +34,6 @@ import java.util.Set;
 
 public class CreateCharacterFragment extends Fragment implements Observer {
 
-    public static final String TAG = CreateCharacterFragment.class.getSimpleName();
-
     private EditText mNameEt;
     private Spinner mRacesSpinner;
     private TextView mAvailablePoints;
@@ -56,7 +54,12 @@ public class CreateCharacterFragment extends Fragment implements Observer {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mCallback = context instanceof Callback ? ((Callback) context) : null;
+        if (context instanceof Callback) {
+            mCallback = (Callback) context;
+        } else {
+            throw new ClassCastException("Expected context to implement "
+                    + Callback.class.getSimpleName());
+        }
     }
 
     @Override
@@ -67,7 +70,8 @@ public class CreateCharacterFragment extends Fragment implements Observer {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_create_character, container, false);
     }
 
@@ -77,7 +81,7 @@ public class CreateCharacterFragment extends Fragment implements Observer {
         mRacesSpinner = view.findViewById(R.id.spinner_race);
         mAvailablePoints = view.findViewById(R.id.tv_available_points);
         mParamsContainer = view.findViewById(R.id.ll_params_container);
-        mSpecializationsRadioGroup = view.findViewById(R.id.rg_rerson_classes);
+        mSpecializationsRadioGroup = view.findViewById(R.id.rg_person_classes);
         mPerksContainer = view.findViewById(R.id.ll_perks_container);
     }
 
@@ -101,9 +105,10 @@ public class CreateCharacterFragment extends Fragment implements Observer {
     }
 
     private void addRaces() {
-        // TODO: 11.12.2017 раскоментируйте это после того, как доделаете логику CharacterCreator.getRases()
+        // TODO: 11.12.2017 раскоментируйте это после того, как доделаете логику CharacterCreator.getRaces()
         String[] races = mCreator.getRaces();
-        SpinnerAdapter spinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, races);
+        SpinnerAdapter spinnerAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_dropdown_item_1line, races);
 
         mRacesSpinner.setAdapter(spinnerAdapter);
         mRacesSpinner.setSelection(mCreator.getRacePosition());
@@ -116,13 +121,13 @@ public class CreateCharacterFragment extends Fragment implements Observer {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
-    });
+        });
     }
 
     private void addSpecializations() {
         // TODO: 11.12.2017 раскоментируйте это после того, как доделаете логику CharacterCreator.getSpecializations()
 
-       String[] specializations = mCreator.getSpecializations();
+        String[] specializations = mCreator.getSpecializations();
         for (String s : specializations) {
             RadioButton button = new RadioButton(getActivity());
             button.setText(s);
@@ -144,7 +149,7 @@ public class CreateCharacterFragment extends Fragment implements Observer {
 
     private void addParametersList() {
         // TODO: 11.12.2017  раскоментируйте это после того, как доделаете логику CharacterCreator.getAttributes();
-    String[] params = mCreator.getAttributes();
+        String[] params = mCreator.getAttributes();
         mParamValues = new TextView[params.length];
         mParamControlButtons = new ImageButton[params.length * 2];
 
@@ -169,16 +174,16 @@ public class CreateCharacterFragment extends Fragment implements Observer {
 
         // TODO: 11.12.2017  раскоментируйте это после того, как доделаете логику CharacterCreator.updateAttributeValue();
 
-     for (int i = 0, size = mParamControlButtons.length; i < size; i++) {
+        for (int i = 0, size = mParamControlButtons.length; i < size; i++) {
             int rowCount = size / 2;
             final int row = i < rowCount ? i : i - rowCount;
             final int action = i < rowCount ? -1 : 1;
 
             mParamControlButtons[i].setOnClickListener(new View.OnClickListener() {
-               @Override
+                @Override
                 public void onClick(View v) {
                     mCreator.updateAttributeValue(row, action);
-               }
+                }
             });
         }
     }

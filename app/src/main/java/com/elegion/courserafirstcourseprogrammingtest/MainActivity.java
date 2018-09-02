@@ -1,6 +1,5 @@
 package com.elegion.courserafirstcourseprogrammingtest;
 
-import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements CreateCharacterFr
 
     @Override
     public void onCreateCharacterStarted() {
-        CreateCharacterFragment fragment = (CreateCharacterFragment) getSupportFragmentManager().findFragmentById(R.id.container);
+        CreateCharacterFragment fragment = (CreateCharacterFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.container);
         fragment.configureCreator(mCreator);
     }
 

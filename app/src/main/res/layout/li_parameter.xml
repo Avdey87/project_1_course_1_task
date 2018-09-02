@@ -3,6 +3,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
@@ -10,7 +11,7 @@
         android:id="@+id/tv_param_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Сила" />
+        tools:text="Сила" />
 
     <Space
         android:layout_width="0dp"
