@@ -90,11 +90,16 @@ public class Character implements Serializable {
                 break;
         }
         mAttack = mClassParameter * ATTACK_SEED;
-        mMagicDefense = mAttributesMap.get(CharacterCreator.Attribute.INTELLECT.name()) * MAGIC_DEFENSE_SEED;
-        mPhysicalDefense = mAttributesMap.get(CharacterCreator.Attribute.STRENGTH.name()) * PHYSICAL_DEFENSE_SEED;
-        mDodge = mAttributesMap.get(CharacterCreator.Attribute.AGILITY.name()) * DODGE_SEED;
-        mCriticalHitChance = mAttributesMap.get(CharacterCreator.Attribute.LUCK.name()) * CRITICAL_ATTACK_SEED + mClassParameter;
-        mHitPoints = mAttributesMap.get(CharacterCreator.Attribute.STAMINA.name()) * HP_SEED + mClassParameter;
+        mMagicDefense = mAttributesMap.get(CharacterCreator.Attribute.INTELLECT.name())
+                * MAGIC_DEFENSE_SEED;
+        mPhysicalDefense = mAttributesMap.get(CharacterCreator.Attribute.STRENGTH.name())
+                * PHYSICAL_DEFENSE_SEED;
+        mDodge = mAttributesMap.get(CharacterCreator.Attribute.AGILITY.name())
+                * DODGE_SEED;
+        mCriticalHitChance = mAttributesMap.get(CharacterCreator.Attribute.LUCK.name())
+                * CRITICAL_ATTACK_SEED + mClassParameter;
+        mHitPoints = mAttributesMap.get(CharacterCreator.Attribute.STAMINA.name())
+                * HP_SEED + mClassParameter;
 
         Boolean isBerserk = mPerks.get(CharacterCreator.Perk.BERSERK.name());
         if (isBerserk != null && isBerserk) {
@@ -110,8 +115,8 @@ public class Character implements Serializable {
             mMagicDefense *= 1.1;
         }
 
-        Boolean isLigthWeight = mPerks.get(CharacterCreator.Perk.LIGHTWEIGHT.name());
-        if (isLigthWeight != null && isLigthWeight) {
+        Boolean isLightWeight = mPerks.get(CharacterCreator.Perk.LIGHTWEIGHT.name());
+        if (isLightWeight != null && isLightWeight) {
             mDodge *= 1.1;
             mPhysicalDefense *= 0.85;
         }
@@ -169,6 +174,7 @@ public class Character implements Serializable {
     }
 
     public String getSpecialization() {
-        return mSpecialization.name().substring(0, 1) + mSpecialization.name().substring(1).toLowerCase();
+        return mSpecialization.name().substring(0, 1)
+                + mSpecialization.name().substring(1).toLowerCase();
     }
 }

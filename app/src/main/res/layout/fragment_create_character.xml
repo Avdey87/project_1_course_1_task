@@ -62,13 +62,13 @@
                 android:id="@+id/tv_weapon_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:labelFor="@id/rg_rerson_classes"
+                android:labelFor="@id/rg_person_classes"
                 android:text="@string/Specialization"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <RadioGroup
-                android:id="@+id/rg_rerson_classes"
+                android:id="@+id/rg_person_classes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="8dp">
